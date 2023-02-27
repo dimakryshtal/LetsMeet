@@ -24,10 +24,15 @@ struct User: Codable {
     var job: String?
     var education: String?
     var country: String?
-    var height: Double?
-    var lookingFor: Gender?
+    var height: String?
+    var lookingFor: Gender
     var avatarLink: String?
 
+    subscript(key: String) -> Any? {
+        let m = Mirror(reflecting: self)
+        return m.children.first { $0.label == key }?.value
+    }
+    
     
     
     
@@ -43,6 +48,14 @@ struct User: Codable {
         
     }
     
+    
+}
+
+extension User {
+    static func getCurrentUserID() -> String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
     static func getCurrentUser() -> User? {
         if let currentUserData = UserDefaults.standard.data(forKey: K.currentUserIdentifier) {
             do {
@@ -53,6 +66,44 @@ struct User: Codable {
             }
         }
         return nil
+    }
+    
+//    static func updateCurrentUser(dataToUpdate: [String: Any]) {
+//        guard var user = User.getCurrentUser() else { fatalError("No current user")}
+//        for (key, value) in dataToUpdate {
+//            switch key {
+//            case "username":
+//                user.username = value
+//            default:
+//                return
+//            }
+//        }
+//    }
+    
+    
+    static func uploadMochDataToDatabase() {
+        let names = ["Carl", "Emma", "John", "Miley", "Justing"]
+        
+        for i in 0..<names.count {
+            let id = UUID().uuidString
+            let user = User(objectId: id,
+                            username: names[i],
+                            email: "\(names[i])\(i)@test.com",
+                            city: "Kyiv",
+                            birthDate: String("18-09-1999"),
+                            gender: Gender(rawValue: i % 2 == 0 ? "Female" : "Male")!,
+                            lookingFor: Gender(rawValue: i % 2 == 0 ? "Male" : "Female")!,
+                            avatarLink: "avatarImage")
+            FirestoreManager.shared.setUserInDB(user: user) { error in
+                if let error {
+                    print(error)
+                }
+                let image = ImageItem(name: "avatarImage", image: UIImage(named: "user\(i+1)")!)
+                FirebaseStorageManager.shared.uploadPictureToFirebase(userID: id, image: image) { error in
+                    print(error)
+                }
+            }
+        }
     }
     
 }

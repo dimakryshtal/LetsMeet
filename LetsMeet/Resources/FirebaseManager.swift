@@ -24,7 +24,7 @@ extension FirebaseManager {
         }
     }
     
-    func reloadPassword(for email: String, completion: @escaping (Error?) -> Void) {
+    func resetPassword(for email: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error {
                 completion(error)
@@ -32,6 +32,18 @@ extension FirebaseManager {
             }
             completion(nil)
         }
+    }
+    
+    func resetEmail(email: String, completion: @escaping(Error?) -> Void) {
+        Auth.auth().currentUser?.reload(completion: { error in
+            if let error {
+                print(error)
+                return
+            }
+            Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+                completion(error)
+            })
+        })
     }
     
     func login(withEmail email: String, password: String, completion: @escaping (AuthDataResult?, Error?, Bool) ->  Void) {
@@ -49,4 +61,14 @@ extension FirebaseManager {
             
         }
     }
+    
+    func updateEmail(email: String, completion: @escaping (Error?) -> Void) {
+        Auth.auth().currentUser?.updateEmail(to: email) { error in
+            if let error {
+                print(error)
+            }
+            completion(error)
+        }
+    }
+    
 }

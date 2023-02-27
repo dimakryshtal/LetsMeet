@@ -15,7 +15,15 @@
 		C60C6D54299A2239002BDA11 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C6D53299A2239002BDA11 /* K.swift */; };
 		C6136D84299520AA008D5ECB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6136D83299520AA008D5ECB /* RegisterViewController.swift */; };
 		C629ACC02999313300969E01 /* UIAlertController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629ACBF2999313300969E01 /* UIAlertController + Extension.swift */; };
+		C63AAEB7299D6A710061357D /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63AAEB6299D6A710061357D /* ImageItem.swift */; };
 		C65114C9299A4B38003BBD01 /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65114C8299A4B38003BBD01 /* Date + Extensions.swift */; };
+		C6712832299FEDE300A74FAA /* Shuffle in Frameworks */ = {isa = PBXBuildFile; productRef = C6712831299FEDE300A74FAA /* Shuffle */; };
+		C6712836299FF35A00A74FAA /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6712835299FF35A00A74FAA /* CardViewController.swift */; };
+		C671283829A005D600A74FAA /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671283729A005D600A74FAA /* UserCard.swift */; };
+		C671283A29A010BF00A74FAA /* UaerCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671283929A010BF00A74FAA /* UaerCardModel.swift */; };
+		C671283D29A0111E00A74FAA /* UserCardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671283C29A0111E00A74FAA /* UserCardOverlay.swift */; };
+		C671283F29A021D700A74FAA /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671283E29A021D700A74FAA /* UIView + Extension.swift */; };
+		C671284129A02DF400A74FAA /* UserCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671284029A02DF400A74FAA /* UserCardContentView.swift */; };
 		C68DAB84299500DA005FBDC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DAB83299500DA005FBDC9 /* AppDelegate.swift */; };
 		C68DAB86299500DA005FBDC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DAB85299500DA005FBDC9 /* SceneDelegate.swift */; };
 		C68DAB88299500DA005FBDC9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DAB87299500DA005FBDC9 /* WelcomeViewController.swift */; };
@@ -31,6 +39,10 @@
 		C68DABA52995078F005FBDC9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C68DABA42995078F005FBDC9 /* FirebaseFirestoreSwift */; };
 		C68DABA72995078F005FBDC9 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C68DABA62995078F005FBDC9 /* FirebaseMessaging */; };
 		C68DABA92995078F005FBDC9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C68DABA82995078F005FBDC9 /* FirebaseStorage */; };
+		C6A1995829A8C371007D3668 /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A1995729A8C371007D3668 /* UserProfileTableViewController.swift */; };
+		C6AE044A29A0CA3D002D17D4 /* UserCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AE044929A0CA3D002D17D4 /* UserCardFooterView.swift */; };
+		C6D3D16B29ACAD5500314CF1 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D3D16A29ACAD5500314CF1 /* ImageCollectionViewCell.swift */; };
+		C6EDB0ED299C1A00001377BE /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB0EC299C1A00001377BE /* FirebaseStorageManager.swift */; };
 		C6EF39B329990A5F00F9AA3E /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF39B229990A5F00F9AA3E /* ProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +54,14 @@
 		C60C6D53299A2239002BDA11 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		C6136D83299520AA008D5ECB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C629ACBF2999313300969E01 /* UIAlertController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController + Extension.swift"; sourceTree = "<group>"; };
+		C63AAEB6299D6A710061357D /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		C65114C8299A4B38003BBD01 /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
+		C6712835299FF35A00A74FAA /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		C671283729A005D600A74FAA /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
+		C671283929A010BF00A74FAA /* UaerCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UaerCardModel.swift; sourceTree = "<group>"; };
+		C671283C29A0111E00A74FAA /* UserCardOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardOverlay.swift; sourceTree = "<group>"; };
+		C671283E29A021D700A74FAA /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		C671284029A02DF400A74FAA /* UserCardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardContentView.swift; sourceTree = "<group>"; };
 		C68DAB80299500DA005FBDC9 /* LetsMeet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsMeet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68DAB83299500DA005FBDC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C68DAB85299500DA005FBDC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +71,10 @@
 		C68DAB8F299500DB005FBDC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C68DAB91299500DB005FBDC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C68DAB9729950192005FBDC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C6A1995729A8C371007D3668 /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
+		C6AE044929A0CA3D002D17D4 /* UserCardFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardFooterView.swift; sourceTree = "<group>"; };
+		C6D3D16A29ACAD5500314CF1 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		C6EDB0EC299C1A00001377BE /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		C6EF39B229990A5F00F9AA3E /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +85,7 @@
 			files = (
 				C68DAB9D2995078F005FBDC9 /* FirebaseAnalyticsSwift in Frameworks */,
 				C68DAB9F2995078F005FBDC9 /* FirebaseAuth in Frameworks */,
+				C6712832299FEDE300A74FAA /* Shuffle in Frameworks */,
 				C68DABA72995078F005FBDC9 /* FirebaseMessaging in Frameworks */,
 				C60B888929952AD0006BD382 /* ProgressHUD in Frameworks */,
 				C68DAB9B2995078F005FBDC9 /* FirebaseAnalytics in Frameworks */,
@@ -81,6 +105,7 @@
 				C60B888529952588006BD382 /* UIViewController + Extensions.swift */,
 				C629ACBF2999313300969E01 /* UIAlertController + Extension.swift */,
 				C65114C8299A4B38003BBD01 /* Date + Extensions.swift */,
+				C671283E29A021D700A74FAA /* UIView + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -90,6 +115,7 @@
 			children = (
 				C60B888A299530E5006BD382 /* FirestoreManager.swift */,
 				C60B888D29953149006BD382 /* FirebaseManager.swift */,
+				C6EDB0EC299C1A00001377BE /* FirebaseStorageManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -97,7 +123,9 @@
 		C60B889129957F73006BD382 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C671283929A010BF00A74FAA /* UaerCardModel.swift */,
 				C60B888F29957F6F006BD382 /* User.swift */,
+				C63AAEB6299D6A710061357D /* ImageItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -108,8 +136,28 @@
 				C68DAB87299500DA005FBDC9 /* WelcomeViewController.swift */,
 				C6136D83299520AA008D5ECB /* RegisterViewController.swift */,
 				C6EF39B229990A5F00F9AA3E /* ProfileTableViewController.swift */,
+				C6712835299FF35A00A74FAA /* CardViewController.swift */,
+				C6A1995729A8C371007D3668 /* UserProfileTableViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C6522EEF29A14A6B00322B49 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C671283B29A0111300A74FAA /* UserCard */,
+				C6D3D16C29ACAD5A00314CF1 /* CustomCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C671283B29A0111300A74FAA /* UserCard */ = {
+			isa = PBXGroup;
+			children = (
+				C671283729A005D600A74FAA /* UserCard.swift */,
+				C671283C29A0111E00A74FAA /* UserCardOverlay.swift */,
+			);
+			path = UserCard;
 			sourceTree = "<group>";
 		};
 		C68DAB77299500DA005FBDC9 = {
@@ -132,6 +180,7 @@
 		C68DAB82299500DA005FBDC9 /* LetsMeet */ = {
 			isa = PBXGroup;
 			children = (
+				C6522EEF29A14A6B00322B49 /* Views */,
 				C60B88842995254A006BD382 /* Extension */,
 				C68DAB83299500DA005FBDC9 /* AppDelegate.swift */,
 				C68DAB85299500DA005FBDC9 /* SceneDelegate.swift */,
@@ -143,8 +192,18 @@
 				C68DAB8E299500DB005FBDC9 /* LaunchScreen.storyboard */,
 				C68DAB91299500DB005FBDC9 /* Info.plist */,
 				C68DAB9729950192005FBDC9 /* GoogleService-Info.plist */,
+				C671284029A02DF400A74FAA /* UserCardContentView.swift */,
+				C6AE044929A0CA3D002D17D4 /* UserCardFooterView.swift */,
 			);
 			path = LetsMeet;
+			sourceTree = "<group>";
+		};
+		C6D3D16C29ACAD5A00314CF1 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				C6D3D16A29ACAD5500314CF1 /* ImageCollectionViewCell.swift */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +232,7 @@
 				C68DABA62995078F005FBDC9 /* FirebaseMessaging */,
 				C68DABA82995078F005FBDC9 /* FirebaseStorage */,
 				C60B888829952AD0006BD382 /* ProgressHUD */,
+				C6712831299FEDE300A74FAA /* Shuffle */,
 			);
 			productName = LetsMeet;
 			productReference = C68DAB80299500DA005FBDC9 /* LetsMeet.app */;
@@ -205,6 +265,7 @@
 			packageReferences = (
 				C68DAB992995078F005FBDC9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C60B888729952AD0006BD382 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				C6712830299FEDE300A74FAA /* XCRemoteSwiftPackageReference "Shuffle" */,
 			);
 			productRefGroup = C68DAB81299500DA005FBDC9 /* Products */;
 			projectDirPath = "";
@@ -236,15 +297,26 @@
 			files = (
 				C6EF39B329990A5F00F9AA3E /* ProfileTableViewController.swift in Sources */,
 				C60B888629952588006BD382 /* UIViewController + Extensions.swift in Sources */,
+				C671283A29A010BF00A74FAA /* UaerCardModel.swift in Sources */,
+				C671283829A005D600A74FAA /* UserCard.swift in Sources */,
 				C60B888B299530E5006BD382 /* FirestoreManager.swift in Sources */,
 				C60B888E29953149006BD382 /* FirebaseManager.swift in Sources */,
 				C68DAB88299500DA005FBDC9 /* WelcomeViewController.swift in Sources */,
+				C671284129A02DF400A74FAA /* UserCardContentView.swift in Sources */,
+				C6EDB0ED299C1A00001377BE /* FirebaseStorageManager.swift in Sources */,
 				C60B889029957F6F006BD382 /* User.swift in Sources */,
 				C60C6D54299A2239002BDA11 /* K.swift in Sources */,
+				C6712836299FF35A00A74FAA /* CardViewController.swift in Sources */,
+				C671283D29A0111E00A74FAA /* UserCardOverlay.swift in Sources */,
 				C65114C9299A4B38003BBD01 /* Date + Extensions.swift in Sources */,
 				C629ACC02999313300969E01 /* UIAlertController + Extension.swift in Sources */,
+				C6AE044A29A0CA3D002D17D4 /* UserCardFooterView.swift in Sources */,
+				C6D3D16B29ACAD5500314CF1 /* ImageCollectionViewCell.swift in Sources */,
+				C6A1995829A8C371007D3668 /* UserProfileTableViewController.swift in Sources */,
 				C68DAB84299500DA005FBDC9 /* AppDelegate.swift in Sources */,
 				C68DAB86299500DA005FBDC9 /* SceneDelegate.swift in Sources */,
+				C63AAEB7299D6A710061357D /* ImageItem.swift in Sources */,
+				C671283F29A021D700A74FAA /* UIView + Extension.swift in Sources */,
 				C6136D84299520AA008D5ECB /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +467,9 @@
 				DEVELOPMENT_TEAM = HRS8A783WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LetsMeet/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "$(PRODUCT_NAME) would like to access your media library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) would like to access your camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) would like to access your photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -424,6 +499,9 @@
 				DEVELOPMENT_TEAM = HRS8A783WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LetsMeet/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "$(PRODUCT_NAME) would like to access your media library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) would like to access your camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) would like to access your photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -475,6 +553,14 @@
 				minimumVersion = 13.0.0;
 			};
 		};
+		C6712830299FEDE300A74FAA /* XCRemoteSwiftPackageReference "Shuffle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-gallagher/Shuffle.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C68DAB992995078F005FBDC9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -490,6 +576,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C60B888729952AD0006BD382 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
 			productName = ProgressHUD;
+		};
+		C6712831299FEDE300A74FAA /* Shuffle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6712830299FEDE300A74FAA /* XCRemoteSwiftPackageReference "Shuffle" */;
+			productName = Shuffle;
 		};
 		C68DAB9A2995078F005FBDC9 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -69,7 +69,8 @@ class RegisterViewController: UIViewController {
                             email: email,
                             city: city,
                             birthDate: birthDate,
-                            gender: self.gender)
+                            gender: self.gender,
+                            lookingFor: self.gender == .male ? .female : .male)
             user.saveLocally()
 
             authResult.user.sendEmailVerification { error in

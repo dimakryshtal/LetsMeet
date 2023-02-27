@@ -21,16 +21,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
+//        User.uploadMochDataToDatabase()
+        
+        
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                print(user?.uid, user?.isEmailVerified)
+                print(user?.uid, user?.isEmailVerified) 
                 if let user, user.isEmailVerified {
                     //if user is logged in
                     
                     guard let mainView = mainStoryboard.instantiateViewController(withIdentifier: "MainView") as? UITabBarController else {
                         fatalError("Could not typecast to UITabBarController")
                     }
-                    
                     self.window?.rootViewController = mainView
                 } else {
                     // if user isn't logged in
