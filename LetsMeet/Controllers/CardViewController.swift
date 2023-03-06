@@ -9,6 +9,8 @@ import UIKit
 import Shuffle
 import FirebaseFirestore
 
+
+
 class CardViewController: UIViewController {
     
     private var cardStack = SwipeCardStack()
@@ -49,7 +51,7 @@ class CardViewController: UIViewController {
         FirestoreManager.shared.getUsersFromDatabase(limit: 5, lastDocument: nil) { users, lastDocumentSnapshot in
             self.lastDocumentSnapshot = lastDocumentSnapshot
             guard let users else { return }
-            for (i, user) in users.enumerated() {
+            for user in users {
                 self.firstCardModel.append(user)
             }
             self.cardStack.reloadData()
@@ -59,12 +61,6 @@ class CardViewController: UIViewController {
         
         layoutCardStacKView()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-//        FirestoreManager.shared.getUsersFromDatabase { users in
-//
-//        }
     }
     
     private func layoutCardStacKView() {
@@ -97,6 +93,7 @@ class CardViewController: UIViewController {
             fatalError("Could not typecast view to UserProfileTableviewController")
         }
         profileView.profileData = user
+        profileView.delegate = self
         
         self.present(profileView, animated: true)
     }
@@ -119,6 +116,7 @@ extension CardViewController: SwipeCardStackDelegate {
     
     func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
         
+        
         numberOfSwapped += 1
 
         print("\(index) swapped")
@@ -129,7 +127,7 @@ extension CardViewController: SwipeCardStackDelegate {
                 self.lastDocumentSnapshot = lastSnapshot
                 guard let users else { return }
                 var newUsers: [User] = []
-                for (i, user) in users.enumerated() {
+                for user in users{
                     newUsers.append(user)
                 }
 
@@ -145,8 +143,51 @@ extension CardViewController: SwipeCardStackDelegate {
             numberOfSwapped = 0
             swapped.toggle()
             
-            
             cardStack.reloadData()
+        }
+        
+        if direction == .right {
+            let likedUser = swapped ? secondCardModel[index] : firstCardModel[index]
+            FirestoreManager.shared.setLikeInDB(like: LikeObject(id: UUID().uuidString,
+                                                                 user: User.getCurrentUserID()!,
+                                                                 likedUser: likedUser.objectId)) { error in
+                if let error {
+                    print(error)
+                    return
+                }
+            }
+            guard var user = User.getCurrentUser() else {
+                return
+            }
+            
+            
+            user.likedUsers.append(likedUser.objectId)
+            
+//            FirestoreManager.shared.updateUserData(dataToUpdate: ["likedUsers" : user.likedUsers]) { error in
+//                if let error {
+//                    print(error)
+//                    return
+//                }
+//                user.saveLocally()
+//            }
+            FirestoreManager.shared.checkIfLikeIsMutual(likedUserID: likedUser.objectId) { likes in
+                if likes {
+                    let matchView = MatchView(user: likedUser)
+                    self.view.addSubview(matchView)
+                    matchView.anchor(top: self.view.topAnchor,
+                                     left: self.view.leftAnchor,
+                                     bottom: self.view.bottomAnchor,
+                                     right: self.view.rightAnchor,
+                                     paddingTop: 107,
+                                     paddingLeft: 9,
+                                     paddingBottom: 107,
+                                     paddingRight: 9)
+                    
+                } else {
+                    print("The user has not liked you yet. ;(")
+                }
+            }
+            
         }
     }
     
@@ -187,3 +228,16 @@ extension CardViewController: SwipeCardStackDataSource {
     
     
 }
+
+extension CardViewController: UserProfileTableViewDelegate {
+    func swipeLeft() {
+        cardStack.swipe(.left, animated: true)
+    }
+    
+    func swipeRight() {
+        cardStack.swipe(.right, animated: true)
+    }
+    
+    
+}
+

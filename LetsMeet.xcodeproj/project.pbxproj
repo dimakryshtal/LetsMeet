@@ -15,12 +15,15 @@
 		C60C6D54299A2239002BDA11 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C6D53299A2239002BDA11 /* K.swift */; };
 		C6136D84299520AA008D5ECB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6136D83299520AA008D5ECB /* RegisterViewController.swift */; };
 		C629ACC02999313300969E01 /* UIAlertController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629ACBF2999313300969E01 /* UIAlertController + Extension.swift */; };
+		C631D9BA29AF60810031F136 /* LikeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631D9B929AF60810031F136 /* LikeObject.swift */; };
 		C63AAEB7299D6A710061357D /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63AAEB6299D6A710061357D /* ImageItem.swift */; };
 		C65114C9299A4B38003BBD01 /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65114C8299A4B38003BBD01 /* Date + Extensions.swift */; };
+		C6561D2829AE1A68006CDAD5 /* SKPhotoBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = C6561D2729AE1A68006CDAD5 /* SKPhotoBrowser */; };
+		C66452F329B354DA00E32403 /* MatchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66452F229B354DA00E32403 /* MatchObject.swift */; };
 		C6712832299FEDE300A74FAA /* Shuffle in Frameworks */ = {isa = PBXBuildFile; productRef = C6712831299FEDE300A74FAA /* Shuffle */; };
 		C6712836299FF35A00A74FAA /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6712835299FF35A00A74FAA /* CardViewController.swift */; };
 		C671283829A005D600A74FAA /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671283729A005D600A74FAA /* UserCard.swift */; };
-		C671283A29A010BF00A74FAA /* UaerCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671283929A010BF00A74FAA /* UaerCardModel.swift */; };
+		C671283A29A010BF00A74FAA /* UserCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671283929A010BF00A74FAA /* UserCardModel.swift */; };
 		C671283D29A0111E00A74FAA /* UserCardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671283C29A0111E00A74FAA /* UserCardOverlay.swift */; };
 		C671283F29A021D700A74FAA /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671283E29A021D700A74FAA /* UIView + Extension.swift */; };
 		C671284129A02DF400A74FAA /* UserCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C671284029A02DF400A74FAA /* UserCardContentView.swift */; };
@@ -42,6 +45,10 @@
 		C6A1995829A8C371007D3668 /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A1995729A8C371007D3668 /* UserProfileTableViewController.swift */; };
 		C6AE044A29A0CA3D002D17D4 /* UserCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AE044929A0CA3D002D17D4 /* UserCardFooterView.swift */; };
 		C6D3D16B29ACAD5500314CF1 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D3D16A29ACAD5500314CF1 /* ImageCollectionViewCell.swift */; };
+		C6D4730B29B221E500EDE1E4 /* LikedUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4730A29B221E500EDE1E4 /* LikedUsersTableViewController.swift */; };
+		C6D4730F29B222A400EDE1E4 /* LikedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4730E29B222A400EDE1E4 /* LikedUserTableViewCell.swift */; };
+		C6DF0BA629B3656000075386 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DF0BA529B3656000075386 /* MatchView.swift */; };
+		C6DF0BA829B4AF3800075386 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DF0BA729B4AF3800075386 /* ViewController.swift */; };
 		C6EDB0ED299C1A00001377BE /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB0EC299C1A00001377BE /* FirebaseStorageManager.swift */; };
 		C6EF39B329990A5F00F9AA3E /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF39B229990A5F00F9AA3E /* ProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -54,11 +61,13 @@
 		C60C6D53299A2239002BDA11 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		C6136D83299520AA008D5ECB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C629ACBF2999313300969E01 /* UIAlertController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController + Extension.swift"; sourceTree = "<group>"; };
+		C631D9B929AF60810031F136 /* LikeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeObject.swift; sourceTree = "<group>"; };
 		C63AAEB6299D6A710061357D /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		C65114C8299A4B38003BBD01 /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
+		C66452F229B354DA00E32403 /* MatchObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchObject.swift; sourceTree = "<group>"; };
 		C6712835299FF35A00A74FAA /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		C671283729A005D600A74FAA /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
-		C671283929A010BF00A74FAA /* UaerCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UaerCardModel.swift; sourceTree = "<group>"; };
+		C671283929A010BF00A74FAA /* UserCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardModel.swift; sourceTree = "<group>"; };
 		C671283C29A0111E00A74FAA /* UserCardOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardOverlay.swift; sourceTree = "<group>"; };
 		C671283E29A021D700A74FAA /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		C671284029A02DF400A74FAA /* UserCardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +83,10 @@
 		C6A1995729A8C371007D3668 /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
 		C6AE044929A0CA3D002D17D4 /* UserCardFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardFooterView.swift; sourceTree = "<group>"; };
 		C6D3D16A29ACAD5500314CF1 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		C6D4730A29B221E500EDE1E4 /* LikedUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedUsersTableViewController.swift; sourceTree = "<group>"; };
+		C6D4730E29B222A400EDE1E4 /* LikedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedUserTableViewCell.swift; sourceTree = "<group>"; };
+		C6DF0BA529B3656000075386 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		C6DF0BA729B4AF3800075386 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C6EDB0EC299C1A00001377BE /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		C6EF39B229990A5F00F9AA3E /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +102,7 @@
 				C68DABA72995078F005FBDC9 /* FirebaseMessaging in Frameworks */,
 				C60B888929952AD0006BD382 /* ProgressHUD in Frameworks */,
 				C68DAB9B2995078F005FBDC9 /* FirebaseAnalytics in Frameworks */,
+				C6561D2829AE1A68006CDAD5 /* SKPhotoBrowser in Frameworks */,
 				C68DABA32995078F005FBDC9 /* FirebaseFirestore in Frameworks */,
 				C68DABA92995078F005FBDC9 /* FirebaseStorage in Frameworks */,
 				C68DABA12995078F005FBDC9 /* FirebaseAuthCombine-Community in Frameworks */,
@@ -123,9 +137,11 @@
 		C60B889129957F73006BD382 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C671283929A010BF00A74FAA /* UaerCardModel.swift */,
+				C671283929A010BF00A74FAA /* UserCardModel.swift */,
 				C60B888F29957F6F006BD382 /* User.swift */,
 				C63AAEB6299D6A710061357D /* ImageItem.swift */,
+				C631D9B929AF60810031F136 /* LikeObject.swift */,
+				C66452F229B354DA00E32403 /* MatchObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +154,8 @@
 				C6EF39B229990A5F00F9AA3E /* ProfileTableViewController.swift */,
 				C6712835299FF35A00A74FAA /* CardViewController.swift */,
 				C6A1995729A8C371007D3668 /* UserProfileTableViewController.swift */,
+				C6D4730A29B221E500EDE1E4 /* LikedUsersTableViewController.swift */,
+				C6DF0BA729B4AF3800075386 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -147,6 +165,7 @@
 			children = (
 				C671283B29A0111300A74FAA /* UserCard */,
 				C6D3D16C29ACAD5A00314CF1 /* CustomCells */,
+				C6DF0BA529B3656000075386 /* MatchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				C6D3D16A29ACAD5500314CF1 /* ImageCollectionViewCell.swift */,
+				C6D4730E29B222A400EDE1E4 /* LikedUserTableViewCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -233,6 +253,7 @@
 				C68DABA82995078F005FBDC9 /* FirebaseStorage */,
 				C60B888829952AD0006BD382 /* ProgressHUD */,
 				C6712831299FEDE300A74FAA /* Shuffle */,
+				C6561D2729AE1A68006CDAD5 /* SKPhotoBrowser */,
 			);
 			productName = LetsMeet;
 			productReference = C68DAB80299500DA005FBDC9 /* LetsMeet.app */;
@@ -266,6 +287,7 @@
 				C68DAB992995078F005FBDC9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C60B888729952AD0006BD382 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				C6712830299FEDE300A74FAA /* XCRemoteSwiftPackageReference "Shuffle" */,
+				C6561D2629AE1A68006CDAD5 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
 			);
 			productRefGroup = C68DAB81299500DA005FBDC9 /* Products */;
 			projectDirPath = "";
@@ -297,7 +319,7 @@
 			files = (
 				C6EF39B329990A5F00F9AA3E /* ProfileTableViewController.swift in Sources */,
 				C60B888629952588006BD382 /* UIViewController + Extensions.swift in Sources */,
-				C671283A29A010BF00A74FAA /* UaerCardModel.swift in Sources */,
+				C671283A29A010BF00A74FAA /* UserCardModel.swift in Sources */,
 				C671283829A005D600A74FAA /* UserCard.swift in Sources */,
 				C60B888B299530E5006BD382 /* FirestoreManager.swift in Sources */,
 				C60B888E29953149006BD382 /* FirebaseManager.swift in Sources */,
@@ -305,16 +327,22 @@
 				C671284129A02DF400A74FAA /* UserCardContentView.swift in Sources */,
 				C6EDB0ED299C1A00001377BE /* FirebaseStorageManager.swift in Sources */,
 				C60B889029957F6F006BD382 /* User.swift in Sources */,
+				C6D4730F29B222A400EDE1E4 /* LikedUserTableViewCell.swift in Sources */,
 				C60C6D54299A2239002BDA11 /* K.swift in Sources */,
+				C66452F329B354DA00E32403 /* MatchObject.swift in Sources */,
 				C6712836299FF35A00A74FAA /* CardViewController.swift in Sources */,
 				C671283D29A0111E00A74FAA /* UserCardOverlay.swift in Sources */,
 				C65114C9299A4B38003BBD01 /* Date + Extensions.swift in Sources */,
 				C629ACC02999313300969E01 /* UIAlertController + Extension.swift in Sources */,
+				C631D9BA29AF60810031F136 /* LikeObject.swift in Sources */,
+				C6DF0BA629B3656000075386 /* MatchView.swift in Sources */,
 				C6AE044A29A0CA3D002D17D4 /* UserCardFooterView.swift in Sources */,
+				C6DF0BA829B4AF3800075386 /* ViewController.swift in Sources */,
 				C6D3D16B29ACAD5500314CF1 /* ImageCollectionViewCell.swift in Sources */,
 				C6A1995829A8C371007D3668 /* UserProfileTableViewController.swift in Sources */,
 				C68DAB84299500DA005FBDC9 /* AppDelegate.swift in Sources */,
 				C68DAB86299500DA005FBDC9 /* SceneDelegate.swift in Sources */,
+				C6D4730B29B221E500EDE1E4 /* LikedUsersTableViewController.swift in Sources */,
 				C63AAEB7299D6A710061357D /* ImageItem.swift in Sources */,
 				C671283F29A021D700A74FAA /* UIView + Extension.swift in Sources */,
 				C6136D84299520AA008D5ECB /* RegisterViewController.swift in Sources */,
@@ -553,6 +581,14 @@
 				minimumVersion = 13.0.0;
 			};
 		};
+		C6561D2629AE1A68006CDAD5 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/suzuki-0000/SKPhotoBrowser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		C6712830299FEDE300A74FAA /* XCRemoteSwiftPackageReference "Shuffle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-gallagher/Shuffle.git";
@@ -576,6 +612,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C60B888729952AD0006BD382 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
 			productName = ProgressHUD;
+		};
+		C6561D2729AE1A68006CDAD5 /* SKPhotoBrowser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6561D2629AE1A68006CDAD5 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */;
+			productName = SKPhotoBrowser;
 		};
 		C6712831299FEDE300A74FAA /* Shuffle */ = {
 			isa = XCSwiftPackageProductDependency;

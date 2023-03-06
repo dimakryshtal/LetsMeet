@@ -23,29 +23,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        User.uploadMochDataToDatabase()
         
-        
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                print(user?.uid, user?.isEmailVerified) 
-                if let user, user.isEmailVerified {
-                    //if user is logged in
-                    
-                    guard let mainView = mainStoryboard.instantiateViewController(withIdentifier: "MainView") as? UITabBarController else {
-                        fatalError("Could not typecast to UITabBarController")
-                    }
-                    self.window?.rootViewController = mainView
-                } else {
-                    // if user isn't logged in
-                    guard let logInController = mainStoryboard.instantiateViewController(withIdentifier: "LoginView") as? WelcomeViewController else {
-                        fatalError("Could not typecast to LoginViewController")
-                    }
-                    self.window?.rootViewController = logInController
-                }
-                self.window?.makeKeyAndVisible()
-                UIView.transition(with: self.window!, duration: 0.3, options: .transitionCrossDissolve, animations: {}, completion: nil)
-                
-            }
-        }
+
+//        handle = Auth.auth().addStateDidChangeListener { auth, user in
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                print(user?.uid, user?.isEmailVerified)
+//                if let user, user.isEmailVerified {
+//                    //if user is logged in
+//
+//                    guard let mainView = mainStoryboard.instantiateViewController(withIdentifier: "MainView") as? UITabBarController else {
+//                        fatalError("Could not typecast to UITabBarController")
+//                    }
+//                    self.window?.rootViewController = mainView
+//                } else {
+//                    // if user isn't logged in
+//                    guard let logInController = mainStoryboard.instantiateViewController(withIdentifier: "LoginView") as? WelcomeViewController else {
+//                        fatalError("Could not typecast to LoginViewController")
+//                    }
+//                    self.window?.rootViewController = logInController
+//                }
+//                self.window?.makeKeyAndVisible()
+//                UIView.transition(with: self.window!, duration: 0.3, options: .transitionCrossDissolve, animations: {}, completion: nil)
+//
+//            }
+//        }
         
     }
     

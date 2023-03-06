@@ -24,6 +24,7 @@ class FirestoreManager {
 }
 
 extension FirestoreManager {
+    
     func getUserFromDb(userID: String, completion: @escaping(DocumentSnapshot?, Error?) -> Void) {
         db.collection("users").document(userID).getDocument { document, error in
             guard let document else {
@@ -40,13 +41,7 @@ extension FirestoreManager {
     
     func setUserInDB(user: User, completion: @escaping(Error?) -> Void) {
         let col = db.collection("users")
-//        guard let currentUser = UserDefaults.standard.data(forKey: K.currentUserIdentifier) else {
-//            print("No data with key 'currentUser' in")
-//            return
-//        }
         do {
-//
-//            let user = try JSONDecoder().decode(User.self, from: currentUser)
             try col.document(user.objectId).setData(from: user, completion: { error in
                 completion(error)
             })
@@ -55,6 +50,8 @@ extension FirestoreManager {
         }
         
     }
+
+    
     
     func updateUserData(dataToUpdate: [String: Any], completion: @escaping(Error?) -> Void) {
         db.collection("users").document(User.getCurrentUser()!.objectId).updateData(dataToUpdate) { err in
@@ -73,8 +70,6 @@ extension FirestoreManager {
             query = query.start(afterDocument: lastDocument)
         }
         
-        
-        
         query.getDocuments { snapshot, error in
             guard let snapshot else {
                 print(error!)
@@ -88,5 +83,70 @@ extension FirestoreManager {
             }
             completion(users, snapshot.documents.last)
         }
+    }
+    
+    func downloadLikedUsers(forUserID: String, comletion: @escaping([User]) -> Void) {
+        let likesQuery = db.collection("likes")
+            .whereField("user", isEqualTo: forUserID)
+            
+        var users: [User] = []
+        likesQuery.getDocuments { snapshot, error in
+            guard let snapshot else {
+                print(error?.localizedDescription)
+                return
+            }
+            let documents = snapshot.documents
+            for (i, document) in documents.enumerated() {
+                let id = try! document.data(as: LikeObject.self).likedUser
+                
+                self.checkIfLikeIsMutual(likedUserID: id) { likes in
+                    print(id, likes)
+                    if likes {
+                        self.getUserFromDb(userID: id) { userSnapshot, error in
+                            guard let userSnapshot else {
+                                print(error?.localizedDescription)
+                                return
+                            }
+                            users.append(try! userSnapshot.data(as: User.self))
+                            if i == documents.count - 1 {
+                                comletion(users)
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+    }
+}
+
+
+extension FirestoreManager {
+    func setLikeInDB(like: LikeObject, completion: @escaping(Error?) -> Void) {
+        let col = db.collection("likes")
+        do {
+            try col.document(like.id).setData(from: like, completion: { error in
+                completion(error)
+            })
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func checkIfLikeIsMutual(likedUserID: String, completion: @escaping(Bool) -> Void) {
+        let query = db.collection("likes")
+            .whereField("user", isEqualTo: likedUserID)
+            .whereField("likedUser", isEqualTo: User.getCurrentUserID()!)
+        
+            query.getDocuments { snapshot, error in
+                guard let snapshot, snapshot.count != 0 else {
+                    completion(false)
+                    return
+                }
+                
+                completion(true)
+            }
     }
 }

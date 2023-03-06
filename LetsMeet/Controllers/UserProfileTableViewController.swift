@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import SKPhotoBrowser
+
+protocol UserProfileTableViewDelegate {
+    func swipeLeft()
+    func swipeRight()
+}
 
 class UserProfileTableViewController: UITableViewController {
-    
-    
-    
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
     
@@ -26,11 +29,17 @@ class UserProfileTableViewController: UITableViewController {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var lookingForLabel: UILabel!
     
+    @IBOutlet weak var passButton: UIButton!
+    @IBOutlet weak var smashButton: UIButton!
+    
     var allImages: [ImageItem] = []
+    
+    var delegate: UserProfileTableViewDelegate!
     
     
     var profileData: User? {
         didSet {
+            print("Did set data")
             guard let profileData else { return }
         }
     }
@@ -38,27 +47,37 @@ class UserProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pageControl.isHidden = true
         photosCollectionView.delegate = self
         photosCollectionView.dataSource = self
         
         
-        showUserData()
+        
     
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("View will appear")
+        pageControl.isHidden = true
+        activityIndicator.startAnimating()
+        showUserData()
     }
     
     @IBAction func didTapPassButton(_ sender: Any) {
-//        changeActivityIndicatorState()
+        self.dismiss(animated: true)
     }
     
     
     @IBAction func didTapSmashButton(_ sender: Any) {
+        self.dismiss(animated: true)
+        delegate.swipeRight()
     }
     
 }
 
 extension UserProfileTableViewController {
     private func showUserData() {
+        print(profileData)
         guard let profileData else {return}
         aboutTextView.text = profileData.aboutMe ?? ""
         educationLabel.text = profileData.education
@@ -76,6 +95,7 @@ extension UserProfileTableViewController {
                 return image1.name == imageName && image2.name != imageName
             }
             
+            print(self.allImages)
             self.setPageControlPages()
             self.changeActivityIndicatorState()
             self.photosCollectionView.reloadData()
@@ -83,10 +103,13 @@ extension UserProfileTableViewController {
     }
 }
 
+//MARK: - Helpers
 extension UserProfileTableViewController {
+    
     private func changeActivityIndicatorState() {
         activityIndicator.isHidden.toggle()
         pageControl.isHidden.toggle()
+
         activityIndicator.isAnimating ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
     }
 }
@@ -111,7 +134,12 @@ extension UserProfileTableViewController {
     }
 }
 
-extension UserProfileTableViewController: UICollectionViewDelegate {}
+extension UserProfileTableViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let images = allImages.map { $0.image }
+        showImages(images, startIndex: indexPath.item)
+    }
+}
 
 extension UserProfileTableViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -142,5 +170,19 @@ extension UserProfileTableViewController: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+//MARK: - SKPhotoBrowser
+
+extension UserProfileTableViewController {
+    private func showImages(_ images:[UIImage], startIndex: Int) {
+        var SKImages: [SKPhoto] = images.map { image in
+            SKPhoto.photoWithImage(image)
+        }
+        
+        let browser = SKPhotoBrowser(photos: SKImages)
+        browser.initializePageIndex(startIndex)
+        self.present(browser, animated: true)
     }
 }

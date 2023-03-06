@@ -25,6 +25,7 @@ struct User: Codable {
     var education: String?
     var country: String?
     var height: String?
+    var likedUsers: [String] = []
     var lookingFor: Gender
     var avatarLink: String?
 
@@ -37,6 +38,7 @@ struct User: Codable {
     
     
     func saveLocally() {
+        
         let endoder = JSONEncoder()
         do {
             let data = try endoder.encode(self)

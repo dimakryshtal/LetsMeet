@@ -130,6 +130,8 @@ extension ProfileTableViewController {
             fatalError("Current user not found")
         }
         
+        print("Show user data called")
+        
         if let imageLink = user.avatarLink {
             FirebaseStorageManager.shared.getImage(image: "\(imageLink).jpeg", userID: user.objectId) { image in
                 guard let image else { return }
