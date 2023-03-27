@@ -96,14 +96,9 @@ extension User {
                             gender: Gender(rawValue: i % 2 == 0 ? "Female" : "Male")!,
                             lookingFor: Gender(rawValue: i % 2 == 0 ? "Male" : "Female")!,
                             avatarLink: "avatarImage")
-            FirestoreManager.shared.setUserInDB(user: user) { error in
-                if let error {
-                    print(error)
-                }
-                let image = ImageItem(name: "avatarImage", image: UIImage(named: "user\(i+1)")!)
-                FirebaseStorageManager.shared.uploadPictureToFirebase(userID: id, image: image) { error in
-                    print(error)
-                }
+            FirestoreManager.shared.setUserInDB(user: user) {
+//                let imageItem = ImageItem(name: "avatarImage", image: UIImage(named: "user\(i+1)")!)
+                FirebaseStorageManager.shared.uploadPictureToFirebase(location: "images/\(user.objectId)/avatarImage.jpeg" ,userID: id, image: UIImage(named: "user\(i+1)")!)
             }
         }
     }

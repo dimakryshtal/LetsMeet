@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import ProgressHUD
 
 class FirebaseManager {
     static let shared = FirebaseManager()
@@ -24,28 +25,15 @@ extension FirebaseManager {
         }
     }
     
-    func resetPassword(for email: String, completion: @escaping (Error?) -> Void) {
+    func resetPassword(for email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error {
-                completion(error)
+                ProgressHUD.showError(error.localizedDescription)
                 return
             }
-            completion(nil)
+            ProgressHUD.showSucceed()
         }
     }
-    
-    func resetEmail(email: String, completion: @escaping(Error?) -> Void) {
-        Auth.auth().currentUser?.reload(completion: { error in
-            if let error {
-                print(error)
-                return
-            }
-            Auth.auth().currentUser?.sendEmailVerification(completion: { error in
-                completion(error)
-            })
-        })
-    }
-    
     func login(withEmail email: String, password: String, completion: @escaping (AuthDataResult?, Error?, Bool) ->  Void) {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             guard let authResult else {
@@ -62,12 +50,34 @@ extension FirebaseManager {
         }
     }
     
-    func updateEmail(email: String, completion: @escaping (Error?) -> Void) {
-        Auth.auth().currentUser?.updateEmail(to: email) { error in
+    
+    private func resetEmail(email: String) {
+        Auth.auth().currentUser?.reload(completion: { error in
             if let error {
                 print(error)
+                return
             }
-            completion(error)
+            Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+                print(error?.localizedDescription)
+            })
+        })
+    }
+    
+    
+    func updateEmail(email: String) {
+        guard var user = User.getCurrentUser() else { return }
+        Auth.auth().currentUser?.updateEmail(to: email) { error in
+            if let error {
+                print(error.localizedDescription)
+                return
+            }
+            user.email = email
+            self.resetEmail(email: email)
+            
+            FirestoreManager.shared.updateUserData(dataToUpdate: ["email" : email]) {
+                user.saveLocally()
+            }
+            
         }
     }
     

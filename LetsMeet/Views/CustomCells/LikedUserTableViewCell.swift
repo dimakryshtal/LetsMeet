@@ -13,10 +13,11 @@ class LikedUserTableViewCell: UITableViewCell {
     
     var userData: User?
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        userImage.contentMode = .scaleAspectFill
+        userImage.layer.cornerRadius = userImage.frame.height / 2
         
     }
 
@@ -25,10 +26,10 @@ class LikedUserTableViewCell: UITableViewCell {
         
     }
     
-    func configure() {
-        guard let userData else { return }
-        name.text = userData.username
-        FirebaseStorageManager.shared.getImage(image: "\(userData.avatarLink!).jpeg", userID: userData.objectId) { image in
+    func configure(with user: User) {
+        userData = user
+        name.text = user.username
+        FirebaseStorageManager.shared.getImage(location: "images/\(user.objectId)/\(user.avatarLink!).jpeg") { image in
             self.userImage.image = image
         }
     }

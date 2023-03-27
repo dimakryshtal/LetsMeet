@@ -33,7 +33,7 @@ class UserCardContentView: UIView {
     
     init(withUser user: User) {
         super.init(frame: .zero)
-        FirebaseStorageManager.shared.getImage(image: "\(user.avatarLink!).jpeg", userID: user.objectId) { image in
+        FirebaseStorageManager.shared.getImage(location: "images/\(user.objectId)/\(user.avatarLink!).jpeg") { image in
             self.imageView.image = image
         }
         

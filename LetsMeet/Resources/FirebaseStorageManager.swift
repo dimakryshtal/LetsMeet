@@ -23,12 +23,12 @@ class FirebaseStorageManager {
 
 extension FirebaseStorageManager {
 
-    func getImage(image: String, userID: String, completion: ((UIImage?) -> Void)?) {
-        let imageLink = "images/\(userID)/\(image)"
+    func getImage(location: String, completion: ((UIImage?) -> Void)? = nil) {
+//        let imageLink = "images/\(userID)/\(image)"
 
-        let imageRef = storage.reference().child(imageLink)
+        let imageRef = storage.reference().child(location)
         
-        if let image = imagesCache.object(forKey: imageLink as NSString) {
+        if let image = imagesCache.object(forKey: location as NSString) {
             print("Retrieved image from cache")
             completion?(image)
             
@@ -44,15 +44,15 @@ extension FirebaseStorageManager {
                 completion?(nil)
                 return
             }
-            self.imagesCache.setObject(image, forKey: imageLink as NSString)
+            self.imagesCache.setObject(image, forKey: location as NSString)
             task.removeAllObservers()
             completion?(image)
         })
         
     }
     
-    func downloadAllImages(UserID: String, completion: @escaping([ImageItem])->Void) {
-        let imagesRef = storage.reference().child("images/\(UserID)")
+    func downloadAllImages(location: String, completion: @escaping([ImageItem])->Void) {
+        let imagesRef = storage.reference().child(location)
         var images:[ImageItem] = []
         
         imagesRef.listAll { storageResult, error in
@@ -65,8 +65,7 @@ extension FirebaseStorageManager {
             
             for item in storageResult.items {
                 let imageName = item.name
-                print(imageName)
-                self.getImage(image: imageName, userID: UserID) { image in
+                self.getImage(location: "\(location)/\(imageName)") { image in
                     if let image {
                         images.append(ImageItem(name: imageName, image: image))
                     }
@@ -78,15 +77,35 @@ extension FirebaseStorageManager {
         }
     }
     
-    func uploadPictureToFirebase(userID: String, image: ImageItem, completion: @escaping(Error?) -> Void) {
-        let imagesRef = storage.reference().child("images/\(userID)/\(image.name).jpeg")
+    func uploadPictureToFirebase(location: String, userID: String, image: UIImage, completion: (() -> Void)? = nil) {
+        let imagesRef = storage.reference().child(location)
         
         var task: StorageUploadTask!
         
-        task = imagesRef.putData(image.image.jpegData(compressionQuality: 0.5)!) { _, error in
+        task = imagesRef.putData(image.jpegData(compressionQuality: 0.5)!) { _, error in
             task.removeAllObservers()
-            completion(error)
+            if let error {
+                print(error)
+                return
+            }
+            completion?()
         }
+        
+        task.observe(.progress) { storageSnapshot in
+            let progress = Double(storageSnapshot.progress!.completedUnitCount) / Double(storageSnapshot.progress!.totalUnitCount)
+            print(progress)
+        }
+        
+        
+    }
+    
+    func uploadPictureToFirebase(location: String, userID: String, image: UIImage) async {
+        await withCheckedContinuation({ continuation in
+            uploadPictureToFirebase(location: location, userID: userID, image: image) {
+                continuation.resume()
+            }
+        })
+        
         
     }
 }

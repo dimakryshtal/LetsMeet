@@ -14,10 +14,13 @@
 		C60B889029957F6F006BD382 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60B888F29957F6F006BD382 /* User.swift */; };
 		C60C6D54299A2239002BDA11 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C6D53299A2239002BDA11 /* K.swift */; };
 		C6136D84299520AA008D5ECB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6136D83299520AA008D5ECB /* RegisterViewController.swift */; };
+		C613EB5B29CDC8AF00FBCDE3 /* TypingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C613EB5A29CDC8AF00FBCDE3 /* TypingModel.swift */; };
 		C629ACC02999313300969E01 /* UIAlertController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629ACBF2999313300969E01 /* UIAlertController + Extension.swift */; };
+		C62EA30829BDE544006CD340 /* ChatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62EA30729BDE544006CD340 /* ChatObject.swift */; };
 		C631D9BA29AF60810031F136 /* LikeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631D9B929AF60810031F136 /* LikeObject.swift */; };
 		C63AAEB7299D6A710061357D /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63AAEB6299D6A710061357D /* ImageItem.swift */; };
 		C65114C9299A4B38003BBD01 /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65114C8299A4B38003BBD01 /* Date + Extensions.swift */; };
+		C6541B1029C897E20028EB02 /* IncomingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6541B0F29C897E20028EB02 /* IncomingMessages.swift */; };
 		C6561D2829AE1A68006CDAD5 /* SKPhotoBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = C6561D2729AE1A68006CDAD5 /* SKPhotoBrowser */; };
 		C66452F329B354DA00E32403 /* MatchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66452F229B354DA00E32403 /* MatchObject.swift */; };
 		C6712832299FEDE300A74FAA /* Shuffle in Frameworks */ = {isa = PBXBuildFile; productRef = C6712831299FEDE300A74FAA /* Shuffle */; };
@@ -44,13 +47,23 @@
 		C68DABA92995078F005FBDC9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C68DABA82995078F005FBDC9 /* FirebaseStorage */; };
 		C6A1995829A8C371007D3668 /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A1995729A8C371007D3668 /* UserProfileTableViewController.swift */; };
 		C6AE044A29A0CA3D002D17D4 /* UserCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AE044929A0CA3D002D17D4 /* UserCardFooterView.swift */; };
+		C6BCC19729BB391B003EB151 /* RecentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCC19629BB391B003EB151 /* RecentsCollectionViewCell.swift */; };
+		C6BCC19B29BB504E003EB151 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCC19A29BB504E003EB151 /* ChatTableViewCell.swift */; };
 		C6D3D16B29ACAD5500314CF1 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D3D16A29ACAD5500314CF1 /* ImageCollectionViewCell.swift */; };
 		C6D4730B29B221E500EDE1E4 /* LikedUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4730A29B221E500EDE1E4 /* LikedUsersTableViewController.swift */; };
 		C6D4730F29B222A400EDE1E4 /* LikedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4730E29B222A400EDE1E4 /* LikedUserTableViewCell.swift */; };
+		C6DB395929B7851200041B35 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DB395829B7851200041B35 /* ChatsViewController.swift */; };
 		C6DF0BA629B3656000075386 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DF0BA529B3656000075386 /* MatchView.swift */; };
 		C6DF0BA829B4AF3800075386 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DF0BA729B4AF3800075386 /* ViewController.swift */; };
 		C6EDB0ED299C1A00001377BE /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB0EC299C1A00001377BE /* FirebaseStorageManager.swift */; };
 		C6EF39B329990A5F00F9AA3E /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF39B229990A5F00F9AA3E /* ProfileTableViewController.swift */; };
+		C6F1EA9F29C73E57008415D5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1EA9E29C73E57008415D5 /* ChatViewController.swift */; };
+		C6F1EAA229C73F01008415D5 /* InputBarAccessoryView in Frameworks */ = {isa = PBXBuildFile; productRef = C6F1EAA129C73F01008415D5 /* InputBarAccessoryView */; };
+		C6F1EAA529C73F70008415D5 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = C6F1EAA429C73F70008415D5 /* MessageKit */; };
+		C6F1EAA729C74C63008415D5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1EAA629C74C63008415D5 /* Message.swift */; };
+		C6F1EAA929C75201008415D5 /* MKMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1EAA829C75201008415D5 /* MKMessage.swift */; };
+		C6F1EAAB29C75A53008415D5 /* MessageDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1EAAA29C75A53008415D5 /* MessageDefaults.swift */; };
+		C6F1EAAE29C770B2008415D5 /* PhotoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1EAAD29C770B2008415D5 /* PhotoMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,10 +73,13 @@
 		C60B888F29957F6F006BD382 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C60C6D53299A2239002BDA11 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		C6136D83299520AA008D5ECB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C613EB5A29CDC8AF00FBCDE3 /* TypingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingModel.swift; sourceTree = "<group>"; };
 		C629ACBF2999313300969E01 /* UIAlertController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController + Extension.swift"; sourceTree = "<group>"; };
+		C62EA30729BDE544006CD340 /* ChatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatObject.swift; sourceTree = "<group>"; };
 		C631D9B929AF60810031F136 /* LikeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeObject.swift; sourceTree = "<group>"; };
 		C63AAEB6299D6A710061357D /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		C65114C8299A4B38003BBD01 /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
+		C6541B0F29C897E20028EB02 /* IncomingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessages.swift; sourceTree = "<group>"; };
 		C66452F229B354DA00E32403 /* MatchObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchObject.swift; sourceTree = "<group>"; };
 		C6712835299FF35A00A74FAA /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		C671283729A005D600A74FAA /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
@@ -82,13 +98,21 @@
 		C68DAB9729950192005FBDC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C6A1995729A8C371007D3668 /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
 		C6AE044929A0CA3D002D17D4 /* UserCardFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardFooterView.swift; sourceTree = "<group>"; };
+		C6BCC19629BB391B003EB151 /* RecentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		C6BCC19A29BB504E003EB151 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		C6D3D16A29ACAD5500314CF1 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		C6D4730A29B221E500EDE1E4 /* LikedUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedUsersTableViewController.swift; sourceTree = "<group>"; };
 		C6D4730E29B222A400EDE1E4 /* LikedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedUserTableViewCell.swift; sourceTree = "<group>"; };
+		C6DB395829B7851200041B35 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		C6DF0BA529B3656000075386 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 		C6DF0BA729B4AF3800075386 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C6EDB0EC299C1A00001377BE /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		C6EF39B229990A5F00F9AA3E /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		C6F1EA9E29C73E57008415D5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		C6F1EAA629C74C63008415D5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		C6F1EAA829C75201008415D5 /* MKMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMessage.swift; sourceTree = "<group>"; };
+		C6F1EAAA29C75A53008415D5 /* MessageDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDefaults.swift; sourceTree = "<group>"; };
+		C6F1EAAD29C770B2008415D5 /* PhotoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +125,12 @@
 				C6712832299FEDE300A74FAA /* Shuffle in Frameworks */,
 				C68DABA72995078F005FBDC9 /* FirebaseMessaging in Frameworks */,
 				C60B888929952AD0006BD382 /* ProgressHUD in Frameworks */,
+				C6F1EAA229C73F01008415D5 /* InputBarAccessoryView in Frameworks */,
 				C68DAB9B2995078F005FBDC9 /* FirebaseAnalytics in Frameworks */,
 				C6561D2829AE1A68006CDAD5 /* SKPhotoBrowser in Frameworks */,
 				C68DABA32995078F005FBDC9 /* FirebaseFirestore in Frameworks */,
 				C68DABA92995078F005FBDC9 /* FirebaseStorage in Frameworks */,
+				C6F1EAA529C73F70008415D5 /* MessageKit in Frameworks */,
 				C68DABA12995078F005FBDC9 /* FirebaseAuthCombine-Community in Frameworks */,
 				C68DABA52995078F005FBDC9 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -142,6 +168,12 @@
 				C63AAEB6299D6A710061357D /* ImageItem.swift */,
 				C631D9B929AF60810031F136 /* LikeObject.swift */,
 				C66452F229B354DA00E32403 /* MatchObject.swift */,
+				C62EA30729BDE544006CD340 /* ChatObject.swift */,
+				C6F1EAA629C74C63008415D5 /* Message.swift */,
+				C6F1EAA829C75201008415D5 /* MKMessage.swift */,
+				C6F1EAAD29C770B2008415D5 /* PhotoMessage.swift */,
+				C6541B0F29C897E20028EB02 /* IncomingMessages.swift */,
+				C613EB5A29CDC8AF00FBCDE3 /* TypingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,6 +188,8 @@
 				C6A1995729A8C371007D3668 /* UserProfileTableViewController.swift */,
 				C6D4730A29B221E500EDE1E4 /* LikedUsersTableViewController.swift */,
 				C6DF0BA729B4AF3800075386 /* ViewController.swift */,
+				C6DB395829B7851200041B35 /* ChatsViewController.swift */,
+				C6F1EA9E29C73E57008415D5 /* ChatViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -166,6 +200,7 @@
 				C671283B29A0111300A74FAA /* UserCard */,
 				C6D3D16C29ACAD5A00314CF1 /* CustomCells */,
 				C6DF0BA529B3656000075386 /* MatchView.swift */,
+				C6F1EAAC29C75A58008415D5 /* Helpers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,8 +257,18 @@
 			children = (
 				C6D3D16A29ACAD5500314CF1 /* ImageCollectionViewCell.swift */,
 				C6D4730E29B222A400EDE1E4 /* LikedUserTableViewCell.swift */,
+				C6BCC19629BB391B003EB151 /* RecentsCollectionViewCell.swift */,
+				C6BCC19A29BB504E003EB151 /* ChatTableViewCell.swift */,
 			);
 			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		C6F1EAAC29C75A58008415D5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C6F1EAAA29C75A53008415D5 /* MessageDefaults.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +299,8 @@
 				C60B888829952AD0006BD382 /* ProgressHUD */,
 				C6712831299FEDE300A74FAA /* Shuffle */,
 				C6561D2729AE1A68006CDAD5 /* SKPhotoBrowser */,
+				C6F1EAA129C73F01008415D5 /* InputBarAccessoryView */,
+				C6F1EAA429C73F70008415D5 /* MessageKit */,
 			);
 			productName = LetsMeet;
 			productReference = C68DAB80299500DA005FBDC9 /* LetsMeet.app */;
@@ -288,6 +335,8 @@
 				C60B888729952AD0006BD382 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				C6712830299FEDE300A74FAA /* XCRemoteSwiftPackageReference "Shuffle" */,
 				C6561D2629AE1A68006CDAD5 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
+				C6F1EAA029C73F01008415D5 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+				C6F1EAA329C73F70008415D5 /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = C68DAB81299500DA005FBDC9 /* Products */;
 			projectDirPath = "";
@@ -319,18 +368,21 @@
 			files = (
 				C6EF39B329990A5F00F9AA3E /* ProfileTableViewController.swift in Sources */,
 				C60B888629952588006BD382 /* UIViewController + Extensions.swift in Sources */,
+				C6541B1029C897E20028EB02 /* IncomingMessages.swift in Sources */,
 				C671283A29A010BF00A74FAA /* UserCardModel.swift in Sources */,
 				C671283829A005D600A74FAA /* UserCard.swift in Sources */,
 				C60B888B299530E5006BD382 /* FirestoreManager.swift in Sources */,
 				C60B888E29953149006BD382 /* FirebaseManager.swift in Sources */,
 				C68DAB88299500DA005FBDC9 /* WelcomeViewController.swift in Sources */,
 				C671284129A02DF400A74FAA /* UserCardContentView.swift in Sources */,
+				C62EA30829BDE544006CD340 /* ChatObject.swift in Sources */,
 				C6EDB0ED299C1A00001377BE /* FirebaseStorageManager.swift in Sources */,
 				C60B889029957F6F006BD382 /* User.swift in Sources */,
 				C6D4730F29B222A400EDE1E4 /* LikedUserTableViewCell.swift in Sources */,
 				C60C6D54299A2239002BDA11 /* K.swift in Sources */,
 				C66452F329B354DA00E32403 /* MatchObject.swift in Sources */,
 				C6712836299FF35A00A74FAA /* CardViewController.swift in Sources */,
+				C613EB5B29CDC8AF00FBCDE3 /* TypingModel.swift in Sources */,
 				C671283D29A0111E00A74FAA /* UserCardOverlay.swift in Sources */,
 				C65114C9299A4B38003BBD01 /* Date + Extensions.swift in Sources */,
 				C629ACC02999313300969E01 /* UIAlertController + Extension.swift in Sources */,
@@ -338,14 +390,22 @@
 				C6DF0BA629B3656000075386 /* MatchView.swift in Sources */,
 				C6AE044A29A0CA3D002D17D4 /* UserCardFooterView.swift in Sources */,
 				C6DF0BA829B4AF3800075386 /* ViewController.swift in Sources */,
+				C6BCC19B29BB504E003EB151 /* ChatTableViewCell.swift in Sources */,
 				C6D3D16B29ACAD5500314CF1 /* ImageCollectionViewCell.swift in Sources */,
+				C6DB395929B7851200041B35 /* ChatsViewController.swift in Sources */,
 				C6A1995829A8C371007D3668 /* UserProfileTableViewController.swift in Sources */,
 				C68DAB84299500DA005FBDC9 /* AppDelegate.swift in Sources */,
+				C6F1EAA729C74C63008415D5 /* Message.swift in Sources */,
+				C6F1EAAB29C75A53008415D5 /* MessageDefaults.swift in Sources */,
 				C68DAB86299500DA005FBDC9 /* SceneDelegate.swift in Sources */,
+				C6F1EA9F29C73E57008415D5 /* ChatViewController.swift in Sources */,
 				C6D4730B29B221E500EDE1E4 /* LikedUsersTableViewController.swift in Sources */,
 				C63AAEB7299D6A710061357D /* ImageItem.swift in Sources */,
+				C6BCC19729BB391B003EB151 /* RecentsCollectionViewCell.swift in Sources */,
 				C671283F29A021D700A74FAA /* UIView + Extension.swift in Sources */,
 				C6136D84299520AA008D5ECB /* RegisterViewController.swift in Sources */,
+				C6F1EAAE29C770B2008415D5 /* PhotoMessage.swift in Sources */,
+				C6F1EAA929C75201008415D5 /* MKMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,9 +555,9 @@
 				DEVELOPMENT_TEAM = HRS8A783WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LetsMeet/Info.plist;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "$(PRODUCT_NAME) would like to access your media library.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) would like to access your camera.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) would like to access your photo library.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "LetsMeet would like to access your media library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "LetsMeet would like to access your camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "LetsMeet would like to access your photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -527,9 +587,9 @@
 				DEVELOPMENT_TEAM = HRS8A783WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LetsMeet/Info.plist;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "$(PRODUCT_NAME) would like to access your media library.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) would like to access your camera.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) would like to access your photo library.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "LetsMeet would like to access your media library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "LetsMeet would like to access your camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "LetsMeet would like to access your photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -605,6 +665,22 @@
 				kind = branch;
 			};
 		};
+		C6F1EAA029C73F01008415D5 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		C6F1EAA329C73F70008415D5 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -662,6 +738,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C68DAB992995078F005FBDC9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		C6F1EAA129C73F01008415D5 /* InputBarAccessoryView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6F1EAA029C73F01008415D5 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */;
+			productName = InputBarAccessoryView;
+		};
+		C6F1EAA429C73F70008415D5 /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6F1EAA329C73F70008415D5 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

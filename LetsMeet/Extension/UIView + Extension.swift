@@ -70,4 +70,10 @@ extension UIView {
         layer.shadowOffset = offset
         layer.shadowColor = color.cgColor
     }
+    
+    func getConstraints(to view: UIView) -> [NSLayoutConstraint] {
+        return constraints.filter { constraint in
+            constraint.firstItem as? UIView == view || constraint.secondItem as? UIView == view
+        }
+    }
 }

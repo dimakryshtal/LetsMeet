@@ -39,18 +39,14 @@ class MatchView: UIView {
     
     let messageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("", for: .normal)
-        button.setImage(UIImage(named: "message"), for: .normal)
+        button.setImage(UIImage(named: "messageButton"), for: .normal)
         
         return button
     }()
     let hideButton: UIButton = {
         let button = UIButton()
-        
-        button.setImage(UIImage(named: "dislike"), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        button.setImage(UIImage(named: "hideButton"), for: .normal)
         button.addTarget(nil, action: #selector(hideButtonTap), for: .touchUpInside)
-//        button.clipsToBounds = true
         
         return button
     }()
@@ -62,13 +58,13 @@ class MatchView: UIView {
         setConstraints()
     }
     
-    override init(frame: CGRect) {
-        self.userData = nil
-        super.init(frame: frame)
-        configureView()
-        setConstraints()
-
-    }
+//    override init(frame: CGRect) {
+//        self.userData = nil
+//        super.init(frame: frame)
+//        configureView()
+//        setConstraints()
+//
+//    }
 
 
     required init(coder aDecoder: NSCoder) {
@@ -79,12 +75,12 @@ class MatchView: UIView {
         self.clipsToBounds = true
         self.layer.cornerRadius = 40
         self.addSubview(imageView)
-        imageView.addSubview(matchBanner)
+        self.addSubview(matchBanner)
         matchBanner.addSubview(hideButton)
         matchBanner.addSubview(matchImage)
         matchBanner.addSubview(messageButton)
         if let userData {
-            FirebaseStorageManager.shared.getImage(image: "\(userData.avatarLink!).jpeg", userID: userData.objectId) { image in
+            FirebaseStorageManager.shared.getImage(location: "images/\(userData.objectId)/\(userData.avatarLink!).jpeg") { image in
                 self.imageView.image = image
             }
         }
@@ -110,6 +106,11 @@ class MatchView: UIView {
 
     @objc func hideButtonTap() {
         print("tapped")
-//        self.removeFromSuperview()
+        UIView.animate(withDuration: 0.2, delay: 0) {
+            self.alpha = 0
+        } completion: { bool in
+            self.removeFromSuperview()
+        }
+
     }
 }

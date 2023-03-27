@@ -30,19 +30,6 @@ class CardViewController: UIViewController {
     private var numberOfSwapped = 0
     private var lastDocumentSnapshot: DocumentSnapshot?
     
-    let smashButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "SmashButton"), for: .normal)
-        
-        return button
-    }()
-    
-    let passButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "Pass"), for: .normal)
-        
-        return button
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +44,7 @@ class CardViewController: UIViewController {
             self.cardStack.reloadData()
         }
 
-        smashButton.addTarget(self, action: #selector(smashButtonTapped), for: .touchUpInside)
+        
         
         layoutCardStacKView()
         
@@ -69,23 +56,13 @@ class CardViewController: UIViewController {
         
         view.addSubview(cardStack)
         
-        view.addSubview(smashButton)
-        view.addSubview(passButton)
-        
-        smashButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, width: 60, height: 60)
-        smashButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
-        
         
         cardStack.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.safeAreaLayoutGuide.leftAnchor,
-                         bottom: smashButton.topAnchor,
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
                          right: view.safeAreaLayoutGuide.rightAnchor,
-                         paddingTop: 10)
-        passButton.anchor(left: smashButton.rightAnchor,
-                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                          paddingLeft: 10,
-                          width: 60,
-                          height: 60)
+                         paddingTop: 10,
+                         paddingBottom: 10)
     }
     
     private func showUserProfileForUser(user: User) {
@@ -163,26 +140,15 @@ extension CardViewController: SwipeCardStackDelegate {
             
             user.likedUsers.append(likedUser.objectId)
             
-//            FirestoreManager.shared.updateUserData(dataToUpdate: ["likedUsers" : user.likedUsers]) { error in
-//                if let error {
-//                    print(error)
-//                    return
-//                }
-//                user.saveLocally()
-//            }
+            FirestoreManager.shared.updateUserData(dataToUpdate: ["likedUsers" : user.likedUsers]) {
+                user.saveLocally()
+            }
+            
             FirestoreManager.shared.checkIfLikeIsMutual(likedUserID: likedUser.objectId) { likes in
                 if likes {
-                    let matchView = MatchView(user: likedUser)
-                    self.view.addSubview(matchView)
-                    matchView.anchor(top: self.view.topAnchor,
-                                     left: self.view.leftAnchor,
-                                     bottom: self.view.bottomAnchor,
-                                     right: self.view.rightAnchor,
-                                     paddingTop: 107,
-                                     paddingLeft: 9,
-                                     paddingBottom: 107,
-                                     paddingRight: 9)
-                    
+                    self.presentMatchView(likedUser: likedUser)
+                    let matchObject = MatchObject(id: UUID().uuidString, memberIDs: [likedUser.objectId, User.getCurrentUserID()!], date: Date.now)
+                    FirestoreManager.shared.setMatchInDB(match: matchObject)
                 } else {
                     print("The user has not liked you yet. ;(")
                 }
@@ -241,3 +207,22 @@ extension CardViewController: UserProfileTableViewDelegate {
     
 }
 
+
+extension CardViewController {
+    func presentMatchView(likedUser: User) {
+        let matchView = MatchView(user: likedUser)
+        matchView.alpha = 0
+        self.view.addSubview(matchView)
+        matchView.anchor(top: self.view.topAnchor,
+                         left: self.view.leftAnchor,
+                         bottom: self.view.bottomAnchor,
+                         right: self.view.rightAnchor,
+                         paddingTop: 107,
+                         paddingLeft: 9,
+                         paddingBottom: 107,
+                         paddingRight: 9)
+        UIView.animate(withDuration: 0.2, delay: 0) {
+            matchView.alpha = 1
+        }
+    }
+}

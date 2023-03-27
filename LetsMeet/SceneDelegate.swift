@@ -21,31 +21,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-//        User.uploadMochDataToDatabase()
-        
 
-//        handle = Auth.auth().addStateDidChangeListener { auth, user in
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                print(user?.uid, user?.isEmailVerified)
-//                if let user, user.isEmailVerified {
-//                    //if user is logged in
-//
-//                    guard let mainView = mainStoryboard.instantiateViewController(withIdentifier: "MainView") as? UITabBarController else {
-//                        fatalError("Could not typecast to UITabBarController")
-//                    }
-//                    self.window?.rootViewController = mainView
-//                } else {
-//                    // if user isn't logged in
-//                    guard let logInController = mainStoryboard.instantiateViewController(withIdentifier: "LoginView") as? WelcomeViewController else {
-//                        fatalError("Could not typecast to LoginViewController")
-//                    }
-//                    self.window?.rootViewController = logInController
-//                }
-//                self.window?.makeKeyAndVisible()
-//                UIView.transition(with: self.window!, duration: 0.3, options: .transitionCrossDissolve, animations: {}, completion: nil)
-//
-//            }
-//        }
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let user, user.isEmailVerified {
+                //if user is logged in
+                
+                guard let mainView = mainStoryboard.instantiateViewController(withIdentifier: "MainView") as? UITabBarController else {
+                    fatalError("Could not typecast to UITabBarController")
+                }
+                self.window?.rootViewController = mainView
+            } else {
+                // if user isn't logged in
+                guard let logInController = mainStoryboard.instantiateViewController(withIdentifier: "LoginView") as? WelcomeViewController else {
+                    fatalError("Could not typecast to LoginViewController")
+                }
+                self.window?.rootViewController = logInController
+            }
+            self.window?.makeKeyAndVisible()
+            UIView.transition(with: self.window!, duration: 0.3, options: .transitionCrossDissolve, animations: {}, completion: nil)
+        }
         
     }
     
@@ -54,11 +48,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error)
-        }
     }
     
     func sceneDidBecomeActive(_ scene: UIScene) {

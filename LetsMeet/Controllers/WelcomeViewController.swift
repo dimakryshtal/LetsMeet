@@ -25,12 +25,7 @@ class WelcomeViewController: UIViewController {
             return
         }
         
-        FirebaseManager.shared.resetPassword(for: email) { error in
-            if let error {
-                ProgressHUD.showError(error.localizedDescription)
-            }
-            ProgressHUD.showSucceed()
-        }
+        FirebaseManager.shared.resetPassword(for: email)
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -58,23 +53,14 @@ class WelcomeViewController: UIViewController {
             }
             
             
-            FirestoreManager.shared.getUserFromDb(userID: authResult.user.uid) { document, error in
-                guard let document else {
-                    print(error!)
-                    return
-                }
-                if document.exists {
-                    do {
-                        let user = try document.data(as: User.self)
-                        if let avatarLink = user.avatarLink {
-                            FirebaseStorageManager.shared.getImage(image: "\(avatarLink).jpeg",
-                                                                   userID: user.objectId, completion: nil)
-                        }
-                        user.saveLocally()
-                        
-                    } catch {
-                        print(error)
+            FirestoreManager.shared.getUserFromDb(userID: authResult.user.uid) { user in
+
+                if let user {
+                    if let avatarLink = user.avatarLink {
+                        FirebaseStorageManager.shared.getImage(location: "images/\(user.objectId)/\(avatarLink).jpeg")
                     }
+                    user.saveLocally()
+
                 } else {
                     guard let userData = UserDefaults.standard.data(forKey: K.currentUserIdentifier) else {
                         fatalError("No current user")
@@ -82,17 +68,13 @@ class WelcomeViewController: UIViewController {
                     
                     do {
                         let user = try JSONDecoder().decode(User.self, from: userData)
-                        FirestoreManager.shared.setUserInDB(user: user) { error in
-                            if let error {
-                                ProgressHUD.showError(error.localizedDescription)
-                            }
-                        }
+                        FirestoreManager.shared.setUserInDB(user: user)
                     } catch {
                         print(error)
                     }
                 }
+                ProgressHUD.showSucceed()
             }
-            ProgressHUD.showSucceed()
             
             
         }

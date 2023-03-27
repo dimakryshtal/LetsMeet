@@ -24,6 +24,7 @@ class LikedUsersTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         FirestoreManager.shared.downloadLikedUsers(forUserID: User.getCurrentUserID()!) { users in
+            guard let users else { return }
             DispatchQueue.main.async {
                 self.users = users
                 self.tableView.reloadData()
@@ -39,11 +40,7 @@ class LikedUsersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = tableView.dequeueReusableCell(withIdentifier: "likedUser", for: indexPath) as! LikedUserTableViewCell
-        
-        
-        item.userData = users[indexPath.item]
-        print(item.userData)
-        item.configure()
+        item.configure(with: users[indexPath.item])
         
         return item
     }
@@ -54,7 +51,8 @@ class LikedUsersTableViewController: UITableViewController {
         guard let profileView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileTableView")  as? UserProfileTableViewController else {
             fatalError("Could not typecast view to UserProfileTableviewController")
         }
-        profileView.profileData = users[indexPath.item]
+        
+        profileView.profileData = (tableView.cellForRow(at: indexPath) as! LikedUserTableViewCell).userData
 
         
         self.navigationController?.pushViewController(profileView, animated: true)

@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct MatchObject {
+struct MatchObject: Codable {
     let id: String
-    let memberIDs: [String]
+    var memberIDs: [String]
     let date: Date
 }
+

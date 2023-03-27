@@ -25,12 +25,12 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var educationTextField: UITextField!
     
     //section 4 IBOutlets
-    @IBOutlet weak var genderTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
-    @IBOutlet weak var lookingForTextField: UITextField!
     @IBOutlet weak var heightTextField: UITextField!
+    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var lookingForSegmentedControl: UISegmentedControl!
     var userInteractionEnabled = false
     
     override func viewDidLoad() {
@@ -38,10 +38,8 @@ class ProfileTableViewController: UITableViewController {
         
         jobTextField.delegate = self
         educationTextField.delegate = self
-        genderTextField.delegate = self
         cityTextField.delegate = self
         countryTextField.delegate = self
-        lookingForTextField.delegate = self
         heightTextField.delegate = self
         
         configureSectionOne()
@@ -55,13 +53,6 @@ class ProfileTableViewController: UITableViewController {
         showUserData()
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
     
     @IBAction func cameraButtonTapped(_ sender: Any) {
         showPictureOptions()
@@ -72,11 +63,11 @@ class ProfileTableViewController: UITableViewController {
             toggleEditing()
         } else {
             let alert = UIAlertController(title: "You are leaving the edit mode without saving you changes.", message: "Would you like to continue", preferredStyle: .alert)
+            let noAction = UIAlertAction(title: "No", style: .default)
             let yesAction = UIAlertAction(title: "Yes", style: .default) { alert in
                 self.toggleEditing()
                 self.showUserData()
             }
-            let noAction = UIAlertAction(title: "No", style: .default)
             
             alert.addAction([yesAction, noAction])
             
@@ -88,6 +79,15 @@ class ProfileTableViewController: UITableViewController {
     @IBAction func settingButtonTapped(_ sender: Any) {
         showSettingsAlert()
     }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    
     
 }
 
@@ -105,22 +105,21 @@ extension ProfileTableViewController {
     private func toggleEditing() {
         userInteractionEnabled.toggle()
         changeEditingState()
-        showSaveItem()
+        toggleSaveNavBarItem()
     }
     
     private func changeEditingState() {
-        
         aboutMeTextView.isEditable = userInteractionEnabled
         jobTextField.isUserInteractionEnabled = userInteractionEnabled
         educationTextField.isUserInteractionEnabled = userInteractionEnabled
-        genderTextField.isUserInteractionEnabled = userInteractionEnabled
+        genderSegmentedControl.isUserInteractionEnabled = userInteractionEnabled
         cityTextField.isUserInteractionEnabled = userInteractionEnabled
         countryTextField.isUserInteractionEnabled = userInteractionEnabled
         heightTextField.isUserInteractionEnabled = userInteractionEnabled
-        lookingForTextField.isUserInteractionEnabled = userInteractionEnabled
+        lookingForSegmentedControl.isUserInteractionEnabled = userInteractionEnabled
     }
     
-    private func showSaveItem() {
+    private func toggleSaveNavBarItem() {
         let barItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = userInteractionEnabled ? barItem : nil
     }
@@ -133,7 +132,7 @@ extension ProfileTableViewController {
         print("Show user data called")
         
         if let imageLink = user.avatarLink {
-            FirebaseStorageManager.shared.getImage(image: "\(imageLink).jpeg", userID: user.objectId) { image in
+            FirebaseStorageManager.shared.getImage(location: "images/\(user.objectId)/\(imageLink).jpeg") { image in
                 guard let image else { return }
                 self.avatar.image = image
             }
@@ -142,11 +141,26 @@ extension ProfileTableViewController {
         nameAgeLabel.text = "\(user.username), \(Date.calculateCurrentAge(birthDate: user.birthDate))"
         aboutMeTextView.text = user.aboutMe ?? ""
         educationTextField.text = user.education ?? ""
-        genderTextField.text = user.gender.rawValue
+        genderSegmentedControl.selectedSegmentIndex = user.gender == .male ? 0 : 1
         cityLabel.text = user.city
         cityTextField.text = user.city
         countryTextField.text = user.country ?? ""
         heightTextField.text = user.height ?? ""
+        lookingForSegmentedControl.selectedSegmentIndex = user.lookingFor == .male ? 0 : 1
+    }
+    
+    //TODO
+    func saveAvatarImage(image: UIImage) {
+        guard var user = User.getCurrentUser() else {
+            fatalError("No current user")
+        }
+        FirebaseStorageManager.shared.uploadPictureToFirebase(location: "images/\(user.objectId)/avatarImage.jpeg",
+                                                              userID: user.objectId,
+                                                              image: image) {
+            self.avatar.image = image
+            user.avatarLink = "avatarImage"
+            FirestoreManager.shared.setUserInDB(user: user)
+        }
     }
 }
 
@@ -155,43 +169,20 @@ extension ProfileTableViewController {
 extension ProfileTableViewController {
     private func showAlertWithTextField(fieldToChangeName: String) {
         let alert = UIAlertController(title: "Change \(fieldToChangeName)", message: "Enter your new \(fieldToChangeName)", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         let okAction = UIAlertAction(title: "OK", style: .default) { alertAction in
-            if let textField = alert.textFields?[0], let newValue = textField.text {
-                
-                guard var user = User.getCurrentUser() else { return }
-                if fieldToChangeName == "Username" {
+            guard var user = User.getCurrentUser() else { return }
+            guard let textField = alert.textFields?[0], let newValue = textField.text else { return }
+            if fieldToChangeName == "Username" {
+                FirestoreManager.shared.updateUserData(dataToUpdate: [fieldToChangeName.lowercased() : newValue]) {
                     user.username = newValue
-                    FirestoreManager.shared.updateUserData(dataToUpdate: [fieldToChangeName.lowercased() : newValue]) { error in
-                        if let error {
-                            print(error)
-                            return
-                        }
-                        user.saveLocally()
-                        self.showUserData()
-                    }
-                } else {
-                    FirebaseManager.shared.updateEmail(email: newValue) { error in
-                        if error != nil { return }
-                        user.email = newValue
-                        FirebaseManager.shared.resetEmail(email: newValue) { error in
-                            if let error {
-                                print(error.localizedDescription)
-                            }
-                            return
-                        }
-                        
-                        FirestoreManager.shared.updateUserData(dataToUpdate: [fieldToChangeName.lowercased() : newValue]) { error in
-                            if error == nil {
-                                user.saveLocally()
-                                self.showUserData()
-                            }
-                        }
-                    }
+                    user.saveLocally()
+                    self.showUserData()
                 }
+            } else {
+                FirebaseManager.shared.updateEmail(email: newValue)
             }
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-
         alert.addTextField { textField in
             textField.placeholder = fieldToChangeName
         }
@@ -200,7 +191,6 @@ extension ProfileTableViewController {
 
         self.present(alert, animated: true)
     }
-    
     
     private func showAvatarOptions() {
         let alert = UIAlertController(title: "Change an Avatar", message: "Do you want to take a new photo or upload from your album?", preferredStyle: .alert)
@@ -262,30 +252,19 @@ extension ProfileTableViewController {
 //MARK: - Actions
 extension ProfileTableViewController {
     @objc func saveButtonTapped() {
-        ProgressHUD.show()
-        
-        guard var user = User.getCurrentUser() else {
-            return
-        }
+        guard var user = User.getCurrentUser() else { return }
         
         user.aboutMe = aboutMeTextView.text
         user.city = cityTextField.text ?? ""
         user.country = countryTextField.text ?? ""
         user.education = educationTextField.text ?? ""
-        user.gender = Gender(rawValue: genderTextField.text!)!
-        user.lookingFor = Gender(rawValue: lookingForTextField.text!)!
+        user.gender = genderSegmentedControl.selectedSegmentIndex == 0 ? .male : .female
+        user.lookingFor = lookingForSegmentedControl.selectedSegmentIndex == 0 ? .male : .female
         
-        
-        FirestoreManager.shared.setUserInDB(user: user) { error in
-            if let error {
-                ProgressHUD.showError(error.localizedDescription)
-                return
-            }
-            user.saveLocally()
-            ProgressHUD.showSucceed()
-            
+        Task {
+            await FirestoreManager.shared.setUserInDB(user: user)
+            toggleEditing()
         }
-        toggleEditing()
     }
     
 }
@@ -314,30 +293,15 @@ extension ProfileTableViewController: UIImagePickerControllerDelegate, UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
+        guard var user = User.getCurrentUser() else {
+            fatalError("No current user")
+        }
+        
         guard let image = info[.editedImage] as? UIImage else {
             print("No image found")
             return
         }
-        avatar.image = image
-    
-        let imageItem = ImageItem(name: "avatarImage", image: image)
-        
-        FirebaseStorageManager.shared.uploadPictureToFirebase(userID: User.getCurrentUserID()!, image: imageItem) { error in
-            if let error {
-                print(error.localizedDescription)
-                return
-            }
-            guard var user = User.getCurrentUser() else {
-                fatalError("No current user")
-            }
-            user.avatarLink = imageItem.name
-            FirestoreManager.shared.setUserInDB(user: user) { error in
-                user.saveLocally()
-                if let error {
-                    print(error)
-                }
-            }
-        }
+        saveAvatarImage(image: image)
     }
 }
 
@@ -369,22 +333,8 @@ extension ProfileTableViewController: PHPickerViewControllerDelegate {
                     return
                 }
                 
-                guard var user = User.getCurrentUser() else { return }
-                FirebaseStorageManager.shared.uploadPictureToFirebase(userID: user.objectId,
-                                                                      image: ImageItem(name: "avatarImage", image: image)) { error in
-                    if let error {
-                        print(error)
-                        return
-                    }
-                    
-                    user.avatarLink = "avatarImage"
-                    FirestoreManager.shared.setUserInDB(user: user) { error in
-                        user.saveLocally()
-                        if let error {
-                            print(error)
-                        }
-                    }
-                }
+                
+                self.saveAvatarImage(image: image)
             }
         }
         else if picker.accessibilityLabel == "imagesSelector" {
@@ -400,14 +350,13 @@ extension ProfileTableViewController: PHPickerViewControllerDelegate {
                         print("Could not parse Data to UIImage")
                         return
                     }
+                    
 
-                    FirebaseStorageManager.shared.uploadPictureToFirebase(userID: User.getCurrentUserID()!,
-                                                                          image: ImageItem(name: String(phAssets[i].localIdentifier.prefix(8)), image: image)) { error in
-                        if let error {
-                            print(error)
-                            return
-                        }
-                    }
+                    let userId = User.getCurrentUserID()!
+
+                    FirebaseStorageManager.shared.uploadPictureToFirebase(location:"images/\(userId)/\(UUID().uuidString).jpeg",
+                                                                          userID: userId,
+                                                                          image: image)
                 }
             }
         }

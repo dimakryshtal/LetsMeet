@@ -37,12 +37,7 @@ class UserProfileTableViewController: UITableViewController {
     var delegate: UserProfileTableViewDelegate!
     
     
-    var profileData: User? {
-        didSet {
-            print("Did set data")
-            guard let profileData else { return }
-        }
-    }
+    var profileData: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +56,7 @@ class UserProfileTableViewController: UITableViewController {
         pageControl.isHidden = true
         activityIndicator.startAnimating()
         showUserData()
+        hideSmashAndPassButtons()
     }
     
     @IBAction func didTapPassButton(_ sender: Any) {
@@ -77,7 +73,6 @@ class UserProfileTableViewController: UITableViewController {
 
 extension UserProfileTableViewController {
     private func showUserData() {
-        print(profileData)
         guard let profileData else {return}
         aboutTextView.text = profileData.aboutMe ?? ""
         educationLabel.text = profileData.education
@@ -88,14 +83,13 @@ extension UserProfileTableViewController {
         
 
         
-        FirebaseStorageManager.shared.downloadAllImages(UserID: profileData.objectId) { images in
+        FirebaseStorageManager.shared.downloadAllImages(location: "images/\(profileData.objectId)") { images in
             self.allImages += images
             self.allImages = self.allImages.sorted { image1, image2 in
                 let imageName = "avatarImage.jpeg"
                 return image1.name == imageName && image2.name != imageName
             }
             
-            print(self.allImages)
             self.setPageControlPages()
             self.changeActivityIndicatorState()
             self.photosCollectionView.reloadData()
@@ -105,6 +99,16 @@ extension UserProfileTableViewController {
 
 //MARK: - Helpers
 extension UserProfileTableViewController {
+    
+    func hideSmashAndPassButtons() {
+        passButton.removeFromSuperview()
+        smashButton.removeFromSuperview()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create chat", image: nil, target: self, action: #selector(createChat))
+        
+        pageControl.bottomAnchor.constraint(equalTo: pageControl.superview!.bottomAnchor, constant: 10).isActive = true
+        
+    }
     
     private func changeActivityIndicatorState() {
         activityIndicator.isHidden.toggle()
@@ -184,5 +188,15 @@ extension UserProfileTableViewController {
         let browser = SKPhotoBrowser(photos: SKImages)
         browser.initializePageIndex(startIndex)
         self.present(browser, animated: true)
+    }
+}
+
+
+//MARK: - Selectors
+
+extension UserProfileTableViewController {
+    @objc func createChat() {
+        FirestoreManager.shared.createNewChat(newChat: ChatObject(id: FirestoreManager.shared.getChatIdFrom(user1Id: User.getCurrentUserID()!, user2Id: profileData!.objectId),
+                                                                  memberIDs: [User.getCurrentUserID()!, profileData!.objectId]))
     }
 }

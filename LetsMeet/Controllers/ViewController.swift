@@ -1,35 +1,35 @@
+////
+////  ViewController.swift
+////  LetsMeet
+////
+////  Created by Dima Kryshtal on 05.03.2023.
+////
 //
-//  ViewController.swift
-//  LetsMeet
+//import UIKit
 //
-//  Created by Dima Kryshtal on 05.03.2023.
+//class ViewController: UIViewController {
+//    let matchView = MatchView()
 //
-
-import UIKit
-
-class ViewController: UIViewController {
-    let matchView = MatchView()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        print("View did load")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        view.addSubview(matchView)
-        setConstraint()
-        
-    }
-
-    func setConstraint() {
-        matchView.anchor(top: view.topAnchor,
-                         left: view.leftAnchor,
-                         bottom: view.bottomAnchor,
-                         right: view.rightAnchor,
-                         paddingTop: 107,
-                         paddingLeft: 9,
-                         paddingBottom: 107,
-                         paddingRight: 9)
-    }
-}
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        print("View did load")
+//    }
+//    
+//    override func viewDidLayoutSubviews() {
+//        view.addSubview(matchView)
+//        setConstraint()
+//        
+//    }
+//
+//    func setConstraint() {
+//        matchView.anchor(top: view.topAnchor,
+//                         left: view.leftAnchor,
+//                         bottom: view.bottomAnchor,
+//                         right: view.rightAnchor,
+//                         paddingTop: 107,
+//                         paddingLeft: 9,
+//                         paddingBottom: 107,
+//                         paddingRight: 9)
+//    }
+//}
